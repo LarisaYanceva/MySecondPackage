@@ -1,0 +1,23 @@
+context("n'th Fibonacci number")
+library(MySecondPackage)
+test_that("n'th Fibonacci number is correct", {
+  expect_equal(fib(0), 0)
+  expect_equal(fib(1), 1)
+  expect_equal(fib(2), 1)
+  expect_equal(fib(3), 2)
+  expect_equal(fib(4), 3)
+  expect_equal(fib(5), 5)
+  expect_equal(fib(6), 8)
+  expect_equal(fib(7), 13)
+  expect_equal(fib(8), 21)
+  expect_equal(fib(9), 34)
+  expect_equal(fib(10), 55)
+})
+
+test_that("unexpected parameters", {
+  expect_error(fib(2.3), "Integer value for parameter 'n' expected")
+  expect_error(fib(-5), "Negative numbers not supported")
+  expect_warning(fib(c(2,4)))
+  expect_equal(fib(c(2,4)), 1)
+  expect_error(fib(NA), "Input parameter must not be 'NA'")
+})
